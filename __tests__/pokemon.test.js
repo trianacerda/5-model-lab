@@ -3,12 +3,12 @@ import setup from '../data/setup.js';
 import request from 'supertest';
 import app from '../lib/app.js';
 
-describe('demo routes', () => {
+describe('pokemon routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
 
-  it('should POST api pokemon to SQL table-- pokemon', () => {
+  it.only('should POST api pokemon to SQL table-- pokemon', () => {
     return request(app)
       .post('/api/v2/pokemon')
       .send()
@@ -17,14 +17,14 @@ describe('demo routes', () => {
           expect.arrayContaining[
             expect.objectContaining({
               id: expect.any(String),
-              pokeName: expect.any(String),
-              url: expect.any(String),
+              poke_name: expect.any(String),
+              url_: expect.any(String),
             })
           ]
         );
       });
   });
-  it.only('should GET ALL pokemon from SQL table', async () => {
+  it('should GET ALL pokemon from SQL table', async () => {
     await request(app).post('/api/v2/pokemon').send();
     return request(app)
       .get('/api/v2/pokemon')
