@@ -13,14 +13,15 @@ describe('pokemon routes', () => {
       .post('/api/v2/pokemon')
       .send()
       .then((res) => {
+        console.log('body', res.body);
         expect(res.body).toEqual(
-          expect.arrayContaining[
+          expect.arrayContaining([
             expect.objectContaining({
               id: expect.any(String),
               poke_name: expect.any(String),
               url_: expect.any(String),
-            })
-          ]
+            }),
+          ])
         );
       });
   });
