@@ -8,10 +8,15 @@ describe('demo routes', () => {
     return setup(pool);
   });
 
+  const black = {
+    color: 'black',
+    url: 'https://pokeapi.co/api/v2/pokemon-color/1/',
+  };
+
   it('should POST api pokemon COLOR to SQL table-- color', () => {
     return request(app)
-      .post('/api/v2/pokemon-color/')
-      .send()
+      .post('/api/v2/pokemon-color')
+      .send(black)
       .then((res) => {
         expect(res.body).toEqual({
           color: 'black',
