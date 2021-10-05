@@ -63,12 +63,20 @@ describe('pokemon routes', () => {
     return request(app)
       .get('/api/v2/pokemon/1')
       .then((res) => {
-        console.log('res', res.body);
         expect(res.body).toEqual({
           id: '1',
           name: 'TRIANAasaur',
           url: 'https://pokeapi.co/api/v2/pokemon/1/',
         });
+      });
+  });
+
+  it('should DELETE a pokemon by id', async () => {
+    await request(app).post('/api/v2/pokemon').send(bulbasaur);
+    return request(app)
+      .delete('/api/v2/pokemon/1')
+      .then((res) => {
+        expect(res.body).toEqual({});
       });
   });
 
