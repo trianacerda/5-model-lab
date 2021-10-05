@@ -53,16 +53,20 @@ describe('pokemon routes', () => {
   });
 
   it('should update/patch pokemon by id', async () => {
-    await request(app).post('/api/v2/pokemon').send(bulbasaur);
+    await request(app).post('/api/v2/pokemon').send({
+      name: 'bulbasaur',
+      url: 'https://pokeapi.co/api/v2/pokemon/1/',
+    });
     await request(app).patch('/api/v2/pokemon/1').send({
-      pokeName: 'TRIANAasaur',
+      name: 'TRIANAasaur',
     });
     return request(app)
       .get('/api/v2/pokemon/1')
       .then((res) => {
+        console.log('res', res.body);
         expect(res.body).toEqual({
           id: '1',
-          pokeName: 'TRIANAasaur',
+          name: 'TRIANAasaur',
           url: 'https://pokeapi.co/api/v2/pokemon/1/',
         });
       });
