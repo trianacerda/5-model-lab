@@ -26,6 +26,19 @@ describe('demo routes', () => {
       });
   });
 
+  it('gets all color-pokemon from SQL table', async () => {
+    await request(app).post('/api/v2/pokemon-color').send();
+    return request(app)
+      .get('/api/v2/pokemon-color')
+      .then((res) => {
+        expect(res.body).toEqual({
+          id: '1',
+          color: black,
+          url: 'https://pokeapi.co/api/v2/pokemon-color/1/',
+        });
+      });
+  });
+
   afterAll(() => {
     pool.end();
   });
