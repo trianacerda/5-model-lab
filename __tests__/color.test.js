@@ -31,7 +31,6 @@ describe('demo routes', () => {
     return request(app)
       .get('/api/v2/pokemon-color')
       .then((res) => {
-        console.log('res', res.body);
         expect(res.body).toEqual({
           id: '1',
           color: 'black',
@@ -47,7 +46,7 @@ describe('demo routes', () => {
       .then((res) => {
         expect(res.body).toEqual({
           id: '1',
-          name: 'black',
+          color: 'black',
           url: 'https://pokeapi.co/api/v2/pokemon-color/1/',
         });
       });
