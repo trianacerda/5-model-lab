@@ -52,6 +52,22 @@ describe('pokemon routes', () => {
       });
   });
 
+  it('should update/patch pokemon by id', async () => {
+    await request(app).post('/api/v2/pokemon').send(bulbasaur);
+    await request(app).patch('/api/v2/pokemon/1').send({
+      pokeName: 'TRIANAasaur',
+    });
+    return request(app)
+      .get('/api/v2/pokemon/1')
+      .then((res) => {
+        expect(res.body).toEqual({
+          id: '1',
+          pokeName: 'TRIANAasaur',
+          url: 'https://pokeapi.co/api/v2/pokemon/1/',
+        });
+      });
+  });
+
   afterAll(() => {
     pool.end();
   });
