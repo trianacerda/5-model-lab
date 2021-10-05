@@ -19,6 +19,7 @@ describe('demo routes', () => {
       .send(black)
       .then((res) => {
         expect(res.body).toEqual({
+          id: '1',
           color: 'black',
           url: 'https://pokeapi.co/api/v2/pokemon-color/1/',
         });
