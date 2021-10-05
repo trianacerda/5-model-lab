@@ -31,9 +31,23 @@ describe('demo routes', () => {
     return request(app)
       .get('/api/v2/pokemon-color')
       .then((res) => {
+        console.log('res', res.body);
         expect(res.body).toEqual({
           id: '1',
-          color: black,
+          color: 'black',
+          url: 'https://pokeapi.co/api/v2/pokemon-color/1/',
+        });
+      });
+  });
+
+  it('gets a color of pokemone by Id', async () => {
+    await request(app).post('/api/v2/pokemon-color').send();
+    return request(app)
+      .get('/api/v2/pokemon-color/1')
+      .then((res) => {
+        expect(res.body).toEqual({
+          id: '1',
+          name: 'black',
           url: 'https://pokeapi.co/api/v2/pokemon-color/1/',
         });
       });
