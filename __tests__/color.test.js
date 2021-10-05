@@ -71,6 +71,15 @@ describe('demo routes', () => {
       });
   });
 
+  it('should Delete a pokemon-color by id', async () => {
+    await request(app).post('/api/v2/pokemon-color').send(black);
+    return request(app)
+      .delete('/api/v2/pokemon-color/1')
+      .then((res) => {
+        expect(res.body).toEqual({});
+      });
+  });
+
   afterAll(() => {
     pool.end();
   });
