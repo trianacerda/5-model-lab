@@ -26,8 +26,15 @@ describe('pokemon routes', () => {
       });
   });
 
-  it('should get all pokemon from fetch call', () => {
-    return request;
+  it('gets all pokemon from fetch call', () => {
+    return request(app)
+      .get('/api/v2/pokemon')
+      .then((res) => {
+        expect(res.body).toEqual({
+          name: 'bulbasaur',
+          url: 'https://pokeapi.co/api/v2/pokemon/1/',
+        });
+      });
   });
 
   afterAll(() => {
