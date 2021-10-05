@@ -8,13 +8,15 @@ describe('pokemon routes', () => {
     return setup(pool);
   });
 
+  const bulbasaur = {
+    name: 'bulbasaur',
+    url: 'https://pokeapi.co/api/v2/pokemon/1/',
+  };
+
   it('post api pokemon to SQL table-- pokemon', () => {
     return request(app)
       .post('/api/v2/pokemon')
-      .send({
-        name: 'bulbasaur',
-        url: 'https://pokeapi.co/api/v2/pokemon/1/',
-      })
+      .send(bulbasaur)
       .then((res) => {
         expect(res.body).toEqual({
           id: '1',
@@ -22,6 +24,10 @@ describe('pokemon routes', () => {
           url: 'https://pokeapi.co/api/v2/pokemon/1/',
         });
       });
+  });
+
+  it('should get all pokemon from fetch call', () => {
+    return request;
   });
 
   afterAll(() => {
