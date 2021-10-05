@@ -52,6 +52,25 @@ describe('demo routes', () => {
       });
   });
 
+  it('should patch the color of the pokemon-color by id', async () => {
+    await request(app).post('/api/v2/pokemon-color').send({
+      color: 'balck',
+      url: 'https://pokeapi.co/api/v2/pokemon-color/1/',
+    });
+    await request(app).patch('/api/v2/pokemon-color/1').send({
+      color: 'matte black with a hint of sparkle',
+    });
+    return request(app)
+      .get('/api/v2/pokemon-color/1')
+      .then((res) => {
+        expect(res.body).toEqual({
+          id: '1',
+          color: 'matte black with a hint of sparkle',
+          url: 'https://pokeapi.co/api/v2/pokemon-color/1/',
+        });
+      });
+  });
+
   afterAll(() => {
     pool.end();
   });
