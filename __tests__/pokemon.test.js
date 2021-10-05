@@ -26,11 +26,13 @@ describe('pokemon routes', () => {
       });
   });
 
-  it('gets all pokemon from fetch call', () => {
+  it('gets all pokemon from SQL table', async () => {
+    await request(app).post('/api/v2/pokemon').send();
     return request(app)
       .get('/api/v2/pokemon')
       .then((res) => {
         expect(res.body).toEqual({
+          id: '1',
           name: 'bulbasaur',
           url: 'https://pokeapi.co/api/v2/pokemon/1/',
         });
