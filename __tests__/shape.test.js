@@ -26,6 +26,19 @@ describe('demo routes', () => {
         });
       });
   });
+
+  it('gets all shape from SQL table', async () => {
+    await request(app).post('/api/v2/pokemon-shape').send(shape);
+    return request(app)
+      .get('/api/v2/pokemon-shape')
+      .then((res) => {
+        expect(res.body).toEqual({
+          id: '1',
+          name: 'ball',
+          url: 'https://pokeapi.co/api/v2/pokemon-shape/1/',
+        });
+      });
+  });
   afterAll(() => {
     pool.end();
   });
