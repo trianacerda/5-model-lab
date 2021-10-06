@@ -38,6 +38,19 @@ describe('demo routes', () => {
         });
       });
   });
+
+  it('gets a habitat by ID', async () => {
+    await request(app).post('/api/v2/pokemon-habitat').send(habitat);
+    return request(app)
+      .get('/api/v2/pokemon-habitat/1')
+      .then((res) => {
+        expect(res.body).toEqual({
+          id: '1',
+          name: 'cave',
+          url: 'https://pokeapi.co/api/v2/pokemon-habitat/1/',
+        });
+      });
+  });
   afterAll(() => {
     pool.end();
   });
