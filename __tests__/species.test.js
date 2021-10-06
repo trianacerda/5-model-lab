@@ -32,7 +32,7 @@ describe('demo routes', () => {
       .then((res) => {
         expect(res.body).toEqual({
           id: '1',
-          name: 'cave',
+          name: 'bulbasaur',
           url: 'https://pokeapi.co/api/v2/pokemon-species/1/',
         });
       });
