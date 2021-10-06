@@ -27,7 +27,7 @@ describe('color routes', () => {
   });
 
   it('gets all color-pokemon from SQL table', async () => {
-    await request(app).post('/api/v2/pokemon-color').send();
+    await request(app).post('/api/v2/pokemon-color').send(black);
     return request(app)
       .get('/api/v2/pokemon-color')
       .then((res) => {
