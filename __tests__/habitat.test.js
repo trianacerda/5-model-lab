@@ -69,7 +69,7 @@ describe('habitat routes', () => {
   });
 
   it('should delete a habitat by id', async () => {
-    await request(app).post('/api/v2/pokemon-habitat/1').send(habitat);
+    await request(app).post('/api/v2/pokemon-habitat').send(habitat);
     return request(app)
       .delete('/api/v2/pokemon-habitat/1')
       .then((res) => {

@@ -69,7 +69,7 @@ describe('shape routes', () => {
   });
 
   it('should delete a shape by ID', async () => {
-    await request(app).post('/api/v2/pokemon-shape/1').send(shape);
+    await request(app).post('/api/v2/pokemon-shape').send(shape);
     return request(app)
       .delete('/api/v2/pokemon-shape/1')
       .then((res) => {
