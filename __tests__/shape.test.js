@@ -67,6 +67,16 @@ describe('demo routes', () => {
         });
       });
   });
+
+  it('should delete a shape by ID', async () => {
+    await request(app).post('/api/v2/pokemon-shape/1').send(shape);
+    return request(app)
+      .delete('/api/v2/pokemon-shape/1')
+      .then((res) => {
+        expect(res.body).toEqual({});
+      });
+  });
+
   afterAll(() => {
     pool.end();
   });
