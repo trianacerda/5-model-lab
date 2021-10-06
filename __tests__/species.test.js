@@ -67,6 +67,15 @@ describe('demo routes', () => {
       });
   });
 
+  it('should delete a species by id', async () => {
+    await request(app).post('/api/v2/pokemon-species').send(species);
+    return request(app)
+      .delete('/api/v2/pokemon-species/1')
+      .then((res) => {
+        expect(res.body).toEqual({});
+      });
+  });
+
   afterAll(() => {
     pool.end();
   });
