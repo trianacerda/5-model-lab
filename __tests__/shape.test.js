@@ -13,8 +13,8 @@ describe('shape routes', () => {
     url: 'https://pokeapi.co/api/v2/pokemon-shape/1/',
   };
 
-  it('should post api pokemon shape to SQL table-- shape', () => {
-    return request(app)
+  it('should post api pokemon shape to SQL table-- shape', async () => {
+    return await request(app)
       .post('/api/v2/pokemon-shape')
       .send(shape)
       .then((res) => {

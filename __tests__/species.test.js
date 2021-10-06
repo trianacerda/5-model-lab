@@ -12,8 +12,8 @@ describe('demo routes', () => {
     name: 'bulbasaur',
     url: 'https://pokeapi.co/api/v2/pokemon-species/1/',
   };
-  it('should post api species to SQL table-- species', () => {
-    return request(app)
+  it('should post api species to SQL table-- species', async () => {
+    return await request(app)
       .post('/api/v2/pokemon-species')
       .send(species)
       .then((res) => {

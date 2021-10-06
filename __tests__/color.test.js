@@ -13,8 +13,8 @@ describe('color routes', () => {
     url: 'https://pokeapi.co/api/v2/pokemon-color/1/',
   };
 
-  it('should POST api pokemon COLOR to SQL table-- color', () => {
-    return request(app)
+  it('should POST api pokemon COLOR to SQL table-- color', async () => {
+    return await request(app)
       .post('/api/v2/pokemon-color')
       .send(black)
       .then((res) => {

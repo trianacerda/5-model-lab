@@ -13,8 +13,8 @@ describe('pokemon routes', () => {
     url: 'https://pokeapi.co/api/v2/pokemon/1/',
   };
 
-  it('post api pokemon to SQL table-- pokemon', () => {
-    return request(app)
+  it('post api pokemon to SQL table-- pokemon', async () => {
+    return await request(app)
       .post('/api/v2/pokemon')
       .send(bulbasaur)
       .then((res) => {
