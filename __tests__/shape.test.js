@@ -18,7 +18,6 @@ describe('demo routes', () => {
       .post('/api/v2/pokemon-shape')
       .send(shape)
       .then((res) => {
-        console.log('res', res.body);
         expect(res.body).toEqual({
           id: '1',
           name: 'ball',
