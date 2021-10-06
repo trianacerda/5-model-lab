@@ -39,8 +39,8 @@ describe('color routes', () => {
       });
   });
 
-  it('gets a color of pokemone by Id', async () => {
-    await request(app).post('/api/v2/pokemon-color').send();
+  it('gets a color of pokemon by Id', async () => {
+    await request(app).post('/api/v2/pokemon-color').send(black);
     return request(app)
       .get('/api/v2/pokemon-color/1')
       .then((res) => {

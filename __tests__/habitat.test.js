@@ -27,7 +27,7 @@ describe('habitat routes', () => {
   });
 
   it('gets all habitat from SQL table', async () => {
-    await request(app).post('/api/v2/pokemon-habitat').send(habitat);
+    await request(app).post('/api/v2/pokemon-habitat').send();
     return request(app)
       .get('/api/v2/pokemon-habitat')
       .then((res) => {
