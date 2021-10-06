@@ -51,6 +51,22 @@ describe('demo routes', () => {
       });
   });
 
+  it('should update || patch species name by id', async () => {
+    await request(app).post('/api/v2/pokemon-species').send(species);
+    await request(app).patch('/api/v2/pokemon-species/1').send({
+      name: 'tri-dino',
+    });
+    return request(app)
+      .get('/api/v2/pokemon-species/1')
+      .then((res) => {
+        expect(res.body).toEqual({
+          id: '1',
+          name: 'tri-dino',
+          url: 'https://pokeapi.co/api/v2/pokemon-species/1/',
+        });
+      });
+  });
+
   afterAll(() => {
     pool.end();
   });
