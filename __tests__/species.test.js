@@ -7,12 +7,21 @@ describe('demo routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
-  it('should POST api pokemon to SQL table-- pokemon', () => {
+
+  const species = {
+    name: 'bulbasaur',
+    url: 'https://pokeapi.co/api/v2/pokemon-species/1/',
+  };
+  it('should post api species to SQL table-- species', () => {
     return request(app)
-      .post('/api/v2/pokemon')
-      .send()
+      .post('/api/v2/pokemon-species')
+      .send(species)
       .then((res) => {
-        expect(res.body).toEqual(res.body);
+        expect(res.body).toEqual({
+          id: '1',
+          name: 'bulbasaur',
+          url: 'https://pokeapi.co/api/v2/pokemon-species/1/',
+        });
       });
   });
   afterAll(() => {

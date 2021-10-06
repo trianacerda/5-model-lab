@@ -3,7 +3,7 @@ import setup from '../data/setup.js';
 import request from 'supertest';
 import app from '../lib/app.js';
 
-describe('demo routes', () => {
+describe('color routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
@@ -54,7 +54,7 @@ describe('demo routes', () => {
 
   it('should patch the color of the pokemon-color by id', async () => {
     await request(app).post('/api/v2/pokemon-color').send({
-      color: 'balck',
+      color: 'black',
       url: 'https://pokeapi.co/api/v2/pokemon-color/1/',
     });
     await request(app).patch('/api/v2/pokemon-color/1').send({
