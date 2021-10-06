@@ -51,6 +51,22 @@ describe('demo routes', () => {
         });
       });
   });
+
+  it('should patch shape name by id', async () => {
+    await request(app).post('/api/v2/pokemon-shape').send(shape);
+    await request(app).patch('/api/v2/pokemon-shape/1').send({
+      name: 'heart-shaped',
+    });
+    return request(app)
+      .get('/api/v2/pokemon-shape/1')
+      .then((res) => {
+        expect(res.body).toEqual({
+          id: '1',
+          name: 'heart-shaped',
+          url: 'https://pokeapi.co/api/v2/pokemon-shape/1/',
+        });
+      });
+  });
   afterAll(() => {
     pool.end();
   });
