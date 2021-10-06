@@ -51,6 +51,22 @@ describe('demo routes', () => {
         });
       });
   });
+
+  it('should update/patch habitat name by id', async () => {
+    await request(app).post('/api/v2/pokemon-habitat').send(habitat);
+    await request(app).patch('/api/v2/pokemon-habitat/1').send({
+      name: 'Trianas Cave!!',
+    });
+    return request(app)
+      .get('/api/v2/pokemon-habitat/1')
+      .then((res) => {
+        expect(res.body).toEqual({
+          id: '1',
+          name: 'Trianas Cave!!',
+          url: 'https://pokeapi.co/api/v2/pokemon-habitat/1/',
+        });
+      });
+  });
   afterAll(() => {
     pool.end();
   });
