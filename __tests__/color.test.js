@@ -53,10 +53,7 @@ describe('color routes', () => {
   });
 
   it('should patch the color of the pokemon-color by id', async () => {
-    await request(app).post('/api/v2/pokemon-color').send({
-      color: 'black',
-      url: 'https://pokeapi.co/api/v2/pokemon-color/1/',
-    });
+    await request(app).post('/api/v2/pokemon-color').send(black);
     await request(app).patch('/api/v2/pokemon-color/1').send({
       color: 'matte black with a hint of sparkle',
     });
