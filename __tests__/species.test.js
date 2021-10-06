@@ -24,6 +24,19 @@ describe('demo routes', () => {
         });
       });
   });
+
+  it('gets pokemon speices from SQL table', async () => {
+    await request(app).post('/api/v2/pokemon-species').send();
+    return request(app)
+      .get('/api/v2/pokemon-species')
+      .then((res) => {
+        expect(res.body).toEqual({
+          id: '1',
+          name: 'cave',
+          url: 'https://pokeapi.co/api/v2/pokemon-species/1/',
+        });
+      });
+  });
   afterAll(() => {
     pool.end();
   });
