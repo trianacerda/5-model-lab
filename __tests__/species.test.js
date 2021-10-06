@@ -38,6 +38,19 @@ describe('demo routes', () => {
       });
   });
 
+  it('gets a specific species by id', async () => {
+    await request(app).post('/api/v2/pokemon-species').send(species);
+    return request(app)
+      .get('/api/v2/pokemon-species/1')
+      .then((res) => {
+        expect(res.body).toEqual({
+          id: '1',
+          name: 'cave',
+          url: 'https://pokeapi.co/api/v2/pokemon-species/1/',
+        });
+      });
+  });
+
   afterAll(() => {
     pool.end();
   });
