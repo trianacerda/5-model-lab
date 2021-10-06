@@ -2,9 +2,11 @@ import pool from '../lib/utils/pool.js';
 import setup from '../data/setup.js';
 import request from 'supertest';
 import app from '../lib/app.js';
+import { jest } from '@jest/globals';
 
 describe('color routes', () => {
   beforeEach(() => {
+    jest.setTimeout(10000);
     return setup(pool);
   });
 
