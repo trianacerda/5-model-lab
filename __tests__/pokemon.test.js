@@ -40,7 +40,7 @@ describe('pokemon routes', () => {
   });
 
   it('gets a pokemon by ID', async () => {
-    await request(app).post('/api/v2/pokemon').send();
+    await request(app).post('/api/v2/pokemon').send(bulbasaur);
     return request(app)
       .get('/api/v2/pokemon/1')
       .then((res) => {
