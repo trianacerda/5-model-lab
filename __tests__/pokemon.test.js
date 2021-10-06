@@ -13,7 +13,7 @@ describe('pokemon routes', () => {
     url: 'https://pokeapi.co/api/v2/pokemon/1/',
   };
 
-  xit('post api pokemon to SQL table-- pokemon', () => {
+  it('post api pokemon to SQL table-- pokemon', () => {
     return request(app)
       .post('/api/v2/pokemon')
       .send(bulbasaur)
@@ -26,7 +26,7 @@ describe('pokemon routes', () => {
       });
   });
 
-  xit('gets all pokemon from SQL table', async () => {
+  it('gets all pokemon from SQL table', async () => {
     await request(app).post('/api/v2/pokemon').send();
     return request(app)
       .get('/api/v2/pokemon')
@@ -39,7 +39,7 @@ describe('pokemon routes', () => {
       });
   });
 
-  xit('gets a pokemon by ID', async () => {
+  it('gets a pokemon by ID', async () => {
     await request(app).post('/api/v2/pokemon').send();
     return request(app)
       .get('/api/v2/pokemon/1')
@@ -52,7 +52,7 @@ describe('pokemon routes', () => {
       });
   });
 
-  xit('should update/patch pokemon by id', async () => {
+  it('should update/patch pokemon by id', async () => {
     await request(app).post('/api/v2/pokemon').send({
       name: 'bulbasaur',
       url: 'https://pokeapi.co/api/v2/pokemon/1/',
@@ -71,7 +71,7 @@ describe('pokemon routes', () => {
       });
   });
 
-  xit('should DELETE a pokemon by id', async () => {
+  it('should DELETE a pokemon by id', async () => {
     await request(app).post('/api/v2/pokemon').send(bulbasaur);
     return request(app)
       .delete('/api/v2/pokemon/1')

@@ -7,20 +7,22 @@ describe('demo routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
-  xit('should POST api pokemon to SQL table-- pokemon', () => {
+
+  const habitat = {
+    name: 'cave',
+    url: 'https://pokeapi.co/api/v2/pokemon-habitat/1/',
+  };
+
+  it('should POST api pokemon to SQL table-- pokemon', () => {
     return request(app)
-      .post('/api/v2/pokemon')
-      .send()
+      .post('/api/v2/pokemon-habitat')
+      .send(habitat)
       .then((res) => {
-        expect(res.body).toEqual(
-          expect.arrayContaining[
-            expect.objectContaining({
-              id: expect.any(String),
-              pokeName: expect.any(String),
-              url: expect.any(String),
-            })
-          ]
-        );
+        expect(res.body).toEqual({
+          id: '1',
+          name: 'cave',
+          url: 'https://pokeapi.co/api/v2/pokemon-habitat/1/',
+        });
       });
   });
   afterAll(() => {
