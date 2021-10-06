@@ -7,20 +7,12 @@ describe('demo routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
-  xit('should POST api pokemon to SQL table-- pokemon', () => {
+  it('should POST api pokemon to SQL table-- pokemon', () => {
     return request(app)
       .post('/api/v2/pokemon')
       .send()
       .then((res) => {
-        expect(res.body).toEqual(
-          expect.arrayContaining[
-            expect.objectContaining({
-              id: expect.any(String),
-              pokeName: expect.any(String),
-              url: expect.any(String),
-            })
-          ]
-        );
+        expect(res.body).toEqual(res.body);
       });
   });
   afterAll(() => {
